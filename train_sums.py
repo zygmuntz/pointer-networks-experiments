@@ -17,7 +17,8 @@ y_file = 'data/y_sums.csv'
 split_at = 9000
 batch_size = 100
 
-hidden_size = 64
+
+hidden_size = 100
 weights_file = 'model_weights/model_weights_sums_{}.hdf5'.format(hidden_size)
 
 n_steps = 3
@@ -66,6 +67,7 @@ model.compile(optimizer='rmsprop',
               metrics=['accuracy'])
 
 print('training and saving model weights each epoch...')
+
 
 validation_data = (x_test, YY_test)
 

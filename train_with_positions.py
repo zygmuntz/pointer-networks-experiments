@@ -23,7 +23,9 @@ y_file = 'data/y_{}.csv'.format(n_steps)
 split_at = 9000
 batch_size = 100
 
-hidden_size = 128
+
+hidden_size = 64
+
 weights_file = 'model_weights/model_weights_with_positions_{}_steps_{}.hdf5'.format(n_steps, hidden_size)
 
 #
@@ -94,3 +96,4 @@ for y_, p_ in list(zip(y_test, p))[:5]:
     print()
 
 model.save_weights(weights_file)
+

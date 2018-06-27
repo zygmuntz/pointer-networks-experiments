@@ -68,6 +68,7 @@ print('training and saving model weights each epoch...')
 
 validation_data = (x_test, YY_test)
 
+
 epoch_counter = 0
 
 history = model.fit(x_train, YY_train, epochs=1, batch_size=batch_size,
