@@ -11,7 +11,7 @@ from PointerLSTM import PointerLSTM
 
 #
 
-n_steps = 5
+n_steps = 3
 
 x_file = 'data/x_{}.csv'.format(n_steps)
 y_file = 'data/y_{}.csv'.format(n_steps)
@@ -68,19 +68,18 @@ print('training and saving model weights each epoch...')
 
 validation_data = (x_test, YY_test)
 
+
 epoch_counter = 0
 
-while True:
+history = model.fit(x_train, YY_train, epochs=1, batch_size=batch_size,
+                    validation_data=validation_data)
 
-    history = model.fit(x_train, YY_train, epochs=1, batch_size=batch_size,
-                        validation_data=validation_data)
+p = model.predict(x_test)
 
-    p = model.predict(x_test)
+for y_, p_ in list(zip(y_test, p))[:5]:
+    print("epoch_counter: ", epoch_counter)
+    print("y_test:", y_)
+    print("p:     ", p_.argmax(axis=1))
+    print()
 
-    for y_, p_ in list(zip(y_test, p))[:5]:
-        print("epoch_counter: ", epoch_counter)
-        print("y_test:", y_)
-        print("p:     ", p_.argmax(axis=1))
-        print()
-
-    # model.save(weights_file)
+model.save(weights_file)
